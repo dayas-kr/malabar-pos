@@ -1,0 +1,31 @@
+@import "tailwindcss";
+@import "./global.css";
+
+@source '../../vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php';
+@source '../../storage/framework/views/*.php';
+@source '../**/*.blade.php';
+@source '../**/*.js';
+
+@custom-variant dark (&:where([data-theme=dark], [data-theme=dark] *));
+
+@theme {
+    --font-sans:
+        "Geist", "Instrument Sans", ui-sans-serif, system-ui, sans-serif,
+        "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol",
+        "Noto Color Emoji";
+}
+
+[x-cloak] {
+    display: none !important;
+}
+
+html.light {
+    color-scheme: light;
+}
+html.dark {
+    color-scheme: dark;
+}
+
+.no-scrollbar::-webkit-scrollbar {
+    display: none;
+}
