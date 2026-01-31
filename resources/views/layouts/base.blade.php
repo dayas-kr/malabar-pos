@@ -12,19 +12,14 @@
 
     <!-- CRITICAL: Prevents flash on page load - inline minimal script -->
     <script>
-        (function() {
-            const stored = localStorage.theme || 'system';
-            document.documentElement.setAttribute('data-theme', stored);
-            const cls = stored === 'system' ?
-                (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') :
-                stored;
-            document.documentElement.classList.remove('dark', 'light');
-            document.documentElement.classList.add(cls);
+        (() => {
+            const m = matchMedia('(prefers-color-scheme: dark)');
+            const t = localStorage.theme || 'system';
+            const cls = t === 'system' ? (m.matches ? 'dark' : 'light') : t;
+            document.documentElement.className = cls;
+            document.documentElement.dataset.theme = cls;
         })();
     </script>
-
-    <!-- Full theme manager -->
-    @vite('resources/js/theme.js')
 
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
