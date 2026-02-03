@@ -1,10 +1,7 @@
-import "./bootstrap";
-import Alpine from "alpinejs";
+import './bootstrap';
 
-import theme from "./theme";
+import Alpine from 'alpinejs';
 
 window.Alpine = Alpine;
-
-Alpine.store("theme", theme);
 
 Alpine.start();
