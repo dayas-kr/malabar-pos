@@ -39,6 +39,7 @@ export default () => ({
         if (!this.initialValidation()) return;
         this.setupAnchor();
         this.setupContentWidth();
+        this.setTransitionOrigin();
     },
 
     initialValidation() {
@@ -106,6 +107,29 @@ export default () => ({
 
     setupContentWidth() {
         this._content.style.minWidth = `${this._trigger.getBoundingClientRect().width}px`;
+    },
+
+    setTransitionOrigin() {
+        const position = this.getPopoverPosition(this.$root.dataset.position);
+
+        // Map position to Tailwind origin classes
+        const originMap = {
+            bottom: "origin-top",
+            "bottom-start": "origin-top-left",
+            "bottom-end": "origin-top-right",
+            top: "origin-bottom",
+            "top-start": "origin-bottom-left",
+            "top-end": "origin-bottom-right",
+            left: "origin-right",
+            "left-start": "origin-top-right",
+            "left-end": "origin-bottom-right",
+            right: "origin-left",
+            "right-start": "origin-top-left",
+            "right-end": "origin-bottom-left",
+        };
+
+        const originClass = originMap[position] || "origin-top";
+        this._content.classList.add(originClass);
     },
 
     getPopoverPosition(pos) {
