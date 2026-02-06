@@ -38,7 +38,7 @@
     @stack('styles')
 </head>
 
-<body class="font-geist antialiased bg-(--background) text-neutral-800 dark:text-(--accent-foreground)">
+<body class="font-geist antialiased bg-(--background) text-(--foreground)">
     <!-- Page Content -->
     <div class="min-h-screen">{{ $slot }}</div>
 
